@@ -1,0 +1,54 @@
+logging:
+  level: INFO          # Logging level: DEBUG, INFO, WARNING, ERROR
+  file: logs/app.log    # Log file path
+
+api:
+  base_url: https://api.solixdepin.net/api
+  endpoints:
+    register: /auth/register
+    login: /auth/login-password
+    stats: /point/get-total-point
+    tasks: /task/get-user-task
+    do_task: /task/do-task
+    claim_task: /task/claim-task
+    connection_quality: /point/get-connection-quality
+
+database:
+  path: database/solix.db  # SQLite database file path
+
+captcha:
+  provider: capsolver            # Captcha-solving provider (capsolver)
+  api_key: 'CAP-'  # Your CapSolver API key
+  turnstile_site_key: '0x4AAAAAABD9Dqblkacz6ou7'
+  turnstile_page_url: 'https://dashboard.solixdepin.net/'
+  create_task_url: 'https://api.capsolver.com/createTask'
+  get_result_url: 'https://api.capsolver.com/getTaskResult'
+
+proxy:
+  file: data/proxy.txt      # Proxy list file
+  rotate_on_error: true     # Rotate proxy on connection errors
+
+registration:
+  concurrency: 2             # Number of parallel registration workers
+  initial_delay_seconds: 5   # Delay before starting registration
+  referral_code: ''         # Referral code to use for new registrations
+
+farming:
+  concurrency: 3             # Number of parallel farming workers
+  initial_delay_seconds: 10   # Delay before starting farming
+  interval_seconds: 60       # Interval between farming calls per account
+
+update_stats:
+  concurrency: 2             # Number of parallel stats-update workers
+  initial_delay_seconds: 5   # Delay before updating stats
+
+tasks:
+  concurrency: 2              # Number of parallel task workers
+  execution_delay_seconds: 10  # Delay between executing user tasks
+
+export:
+  output_file: data/stats_export.csv  # CSV export path
+
+data_files:
+  registration_list: data/registration.txt  # File with emails/passwords for registration
+  farming_list: data/farming.txt           # File with emails/passwords for farming 
