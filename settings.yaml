@@ -30,7 +30,8 @@ proxy:
 
 registration:
   concurrency: 2             # Number of parallel registration workers
-  initial_delay_seconds: 5   # Delay before starting registration
+  initial_delay_seconds: 15   # Delay before starting registration
+  referral_codes_file: data/referral_codes.txt  # File with referral codes list
   referral_code: ''         # Referral code to use for new registrations
 
 farming:
@@ -44,10 +45,12 @@ update_stats:
 
 tasks:
   concurrency: 2              # Number of parallel task workers
+  initial_delay_seconds: 5    # Delay before starting tasks per account
   execution_delay_seconds: 10  # Delay between executing user tasks
 
 export:
   output_file: data/stats_export.csv  # CSV export path
+  referrals_file: data/referral_codes.txt  # Referral codes export path
 
 data_files:
   registration_list: data/registration.txt  # File with emails/passwords for registration
