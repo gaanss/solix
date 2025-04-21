@@ -6,6 +6,10 @@
     <img src="https://img.shields.io/badge/Telegram-Chat-blue?style=for-the-badge&logo=telegram" alt="Telegram Chat">
   </a>
 </p>
+
+<p align="center">
+  <img src="interface.png" alt="Interface Screenshot" />
+</p>
 # Solix DePIN Automation 🚀
 
 A fully asynchronous Python 3.11+ tool to automate interactions with the Solix DePIN. Supports bulk registration, farming (connection quality), statistics updates, task automation, and CSV export.
