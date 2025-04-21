@@ -1,6 +1,0 @@
-curl-cffi==0.10.0
-loguru>=0.7.0
-rich>=13.0.0
-pandas>=2.0.0
-PyYAML>=6.0
-aiosqlite>=0.18.0 
