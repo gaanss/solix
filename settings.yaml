@@ -33,8 +33,6 @@ proxy:
   rotate_on_error: true     # Rotate proxy on connection errors
 
 registration:
-  concurrency: 2             # Number of parallel registration workers
-  initial_delay_seconds: [5, 15]   # Delay before starting registration (in range)
   referral_codes_file: data/referral_codes.txt  # File with referral codes list
   referral_code: ''         # Referral code to use for new registrations
 
@@ -48,9 +46,7 @@ update_stats:
   initial_delay_seconds: [5, 15]   # Delay before updating stats (in range)
 
 tasks:
-  concurrency: 2              # Number of parallel task workers
-  initial_delay_seconds: [5, 15]    # Delay before starting tasks per account (in range)
-  execution_delay_seconds: 10  # Delay between executing user tasks
+  execution_delay_seconds: 15  # Delay between executing user tasks
 
 export:
   output_file: data/stats_export.csv  # CSV export path
