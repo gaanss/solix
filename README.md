@@ -2,57 +2,29 @@
 
 A fully asynchronous Python 3.11+ tool to automate interactions with the Solix/DePIN Stork API. Supports bulk registration, farming (connection quality), statistics updates, task automation, and CSV export.
 
-## 📑 Table of Contents
-- [Features](#features-✨)
-- [Prerequisites](#prerequisites-📋)
-- [Installation](#installation-⚙️)
-- [Configuration](#configuration-📝)
-- [Data Files](#data-files-📂)
-- [Usage](#usage-🚀)
-  - [Interactive Menu](#interactive-menu)
-  - [Standalone Modes](#standalone-modes)
-- [Modes](#modes-🛠️)
-- [Logging](#logging-📜)
-- [Proxy & Captcha](#proxy--captcha-🌐🔒)
-- [Database](#database-🗄️)
-- [Contributing](#contributing-🤝)
-- [License](#license-📄)
-
----
-
 ## Features ✨
-- ✅ **Async-first**: Built with `asyncio` & `curl_cffi` for high concurrency
-- 📝 **Bulk Registration**: AWS Cognito–style endpoints with Turnstile captcha solving
+- 📝 **Bulk Registration** with Turnstile captcha solving
+- 🌀 **Referral Codes**: support loading a list of codes from file and cycling per account
 - 🌐 **Farming**: Periodic connection quality reporting
 - 📊 **Statistics Update**: Fetch total/task/referral points
 - 🤖 **Task Automation**: Follow/like/claim social tasks automatically
-- 💾 **CSV Export**: Quick export via `pandas`
+- 💾 **CSV Export**: Quick export
 - 🔄 **Round-robin Proxies**: Per-account proxy assignment
-- 🔒 **Captcha Solving**: CapSolver integration (Turnstile & HCaptcha)
-- 🗄️ **SQLite DB**: Local storage with `aiosqlite`
+- 🔒 **Captcha Solving**: CapSolver integration
+- 🗄️ **SQLite DB**
 - 🌈 **Rich CLI**: Interactive menu powered by `rich`
-- 📜 **Detailed Logs**: `loguru` with custom `SUCCESS` level
+- 📜 **Detailed Logs**
 
 ## Prerequisites 📋
 - Python 3.11 or newer
-- `libcurl` installed (for `curl_cffi`)
 - A valid CapSolver API key
 - Input files in `data/`: `registration.txt`, `farming.txt`, `proxy.txt`
 
 ## Installation ⚙️
 1. **Clone repository**:
    ```bash
-   git clone https://github.com/yourusername/solix-automation.git
+   git clone https://github.com/gaanss/solix.git
    cd solix-automation
-   ```
-2. **Create virtual environment**:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate   # Windows: venv\Scripts\activate
-   ```
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
    ```
 
 ## Configuration 📝
@@ -91,7 +63,8 @@ proxy:
 registration:
   concurrency: 5
   initial_delay_seconds: 1
-  referral_code: ''
+  referral_code: ''           # Default referral code if no file provided
+  referral_codes_file: data/referral_codes.txt  # File with one referral code per line (cycled)
 
 farming:
   concurrency: 5
@@ -120,23 +93,22 @@ data_files:
 
 ## Usage 🚀
 ### Interactive Menu
+Linux:
 ```bash
-python main.py
+chmod +x solix
+./solix
 ```
+Windows (PowerShell/CMD):
+```powershell
+.\solix.exe
+```
+
 - Navigate with ↑/↓, press **Enter** to select.
 - Modes: Registration, Farming, Update Stats, Execute Tasks, Export Stats, Exit.
 
-### Standalone Modes
-```bash
-python core/registration.py
-python core/farming.py
-python core/update_stats.py
-python core/tasks.py
-python core/export_stats.py
-```
 
 ## Modes 🛠️
-- **Registration**: Bulk signup + token storage
+- **Registration**: Bulk signup + token storage (supports rotating referral codes from a file)
 - **Farming**: Continuous connection quality polling
 - **Update Statistics**: One‑time total/task/referral point update
 - **Execute Tasks**: Perform & claim social tasks
