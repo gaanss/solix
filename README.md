@@ -1,6 +1,14 @@
+<p align="center">
+  <a href="https://t.me/gans_software">
+    <img src="https://img.shields.io/badge/Telegram-Channel-blue?style=for-the-badge&logo=telegram" alt="Telegram Channel">
+  </a>
+  <a href="https://t.me/ganssoftwarechat">
+    <img src="https://img.shields.io/badge/Telegram-Chat-blue?style=for-the-badge&logo=telegram" alt="Telegram Chat">
+  </a>
+</p>
 # Solix DePIN Automation 🚀
 
-A fully asynchronous Python 3.11+ tool to automate interactions with the Solix/DePIN Stork API. Supports bulk registration, farming (connection quality), statistics updates, task automation, and CSV export.
+A fully asynchronous Python 3.11+ tool to automate interactions with the Solix DePIN. Supports bulk registration, farming (connection quality), statistics updates, task automation, and CSV export.
 
 ## Features ✨
 - 📝 **Bulk Registration** with Turnstile captcha solving
@@ -12,7 +20,7 @@ A fully asynchronous Python 3.11+ tool to automate interactions with the Solix/D
 - 🔄 **Round-robin Proxies**: Per-account proxy assignment
 - 🔒 **Captcha Solving**: CapSolver integration
 - 🗄️ **SQLite DB**
-- 🌈 **Rich CLI**: Interactive menu powered by `rich`
+- 🌈 **Rich CLI**: Interactive menu
 - 📜 **Detailed Logs**
 
 ## Prerequisites 📋
@@ -30,53 +38,25 @@ A fully asynchronous Python 3.11+ tool to automate interactions with the Solix/D
 ## Configuration 📝
 Edit `settings.yaml` to match your environment:
 ```yaml
-logging:
-  level: INFO
-  file: logs/app.log
-
-api:
-  base_url: https://api.solixdepin.net/api
-  endpoints:
-    register: /auth/register
-    login: /auth/login-password
-    stats: /point/get-total-point
-    tasks: /task/get-user-task
-    do_task: /task/do-task
-    claim_task: /task/claim-task
-    connection_quality: /point/get-connection-quality
-
 database:
   path: database/solix.db
 
 captcha:
   provider: capsolver
   api_key: 'YOUR_CAPSOLVER_API_KEY'
-  turnstile_site_key: 'YOUR_TURNSTILE_SITE_KEY'
-  turnstile_page_url: 'https://dashboard.solixdepin.net/'
-  create_task_url: 'https://api.capsolver.com/createTask'
-  get_result_url: 'https://api.capsolver.com/getTaskResult'
 
 proxy:
   file: data/proxy.txt
   rotate_on_error: true
 
 registration:
-  concurrency: 5
-  initial_delay_seconds: 1
   referral_code: ''           # Default referral code if no file provided
   referral_codes_file: data/referral_codes.txt  # File with one referral code per line (cycled)
 
-farming:
-  concurrency: 5
-  initial_delay_seconds: 1
-  interval_seconds: 60
-
 update_stats:
-  concurrency: 5
   initial_delay_seconds: 1
 
 tasks:
-  concurrency: 5
   execution_delay_seconds: 10
 
 export:
@@ -126,9 +106,6 @@ Windows (PowerShell/CMD):
 ## Database 🗄️
 - SQLite file at `database/solix.db` with table `accounts`
 - Fields: email, password, tokens, referral code, stats, connection quality
-
-## Contributing 🤝
-Feel free to open issues or pull requests. All contributions welcome! 👍
 
 ## License 📄
 MIT © Your Name 
