@@ -1,6 +1,6 @@
 # Solix DePIN Automation 🚀
 
-A fully asynchronous Python 3.11+ tool to automate interactions with the Solix/DePIN Stork API. Supports bulk registration, farming (connection quality), statistics updates, task automation, and CSV export.
+A fully asynchronous Python 3.11+ tool to automate interactions with the Solix DePIN. Supports bulk registration, farming (connection quality), statistics updates, task automation, and CSV export.
 
 ## Features ✨
 - 📝 **Bulk Registration** with Turnstile captcha solving
