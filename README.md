@@ -110,6 +110,3 @@ Windows (PowerShell/CMD):
 ## Database 🗄️
 - SQLite file at `database/solix.db` with table `accounts`
 - Fields: email, password, tokens, referral code, stats, connection quality
-
-## License 📄
-MIT © Your Name 
