@@ -18,7 +18,7 @@ api:
     max_delay: 15         # Maximum delay (seconds) between retry attempts
 
 database:
-  path: database/solix.db  # SQLite database file path
+  path: solix.db  # SQLite database file path
 
 captcha:
   provider: capsolver            # Captcha-solving provider (capsolver)
@@ -33,6 +33,8 @@ proxy:
   rotate_on_error: true     # Rotate proxy on connection errors
 
 registration:
+  concurrency: 4             # Number of parallel registration workers
+  initial_delay_seconds: [55, 120]   # Delay before starting registration (in range)
   referral_codes_file: data/referral_codes.txt  # File with referral codes list
   referral_code: ''         # Referral code to use for new registrations
 
@@ -46,6 +48,8 @@ update_stats:
   initial_delay_seconds: [5, 15]   # Delay before updating stats (in range)
 
 tasks:
+  concurrency: 4             # Number of parallel registration workers
+  initial_delay_seconds: [55, 120]   # Delay before starting registration (in range)
   execution_delay_seconds: 15  # Delay between executing user tasks
 
 export:
